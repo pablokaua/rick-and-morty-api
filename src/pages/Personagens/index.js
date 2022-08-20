@@ -1,9 +1,10 @@
 import { PersonagensList } from "../../components/PersonagensList"
+import { TitleHome } from "./style"
 
 export const Personagens = () => {
     return (
         <div>
-            <h1>Personagens</h1>
+            <TitleHome>Rick and Morty</TitleHome>
             <PersonagensList/>
         </div>
     )
