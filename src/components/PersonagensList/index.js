@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { getCharacter } from "../../services/rickMortyService"
 import { Link } from "react-router-dom";
+import { Item, ListContainer, SpecieWrapper, WrapperImage } from "./style";
 
 export const PersonagensList = () => {
     const [personagensList, setPersonagensList] = useState([])
 
     useEffect(() => {
         const generateCharacterPromises = () => 
-            Array(10)
+            Array(30)
             .fill()
             .map((_, index) => getCharacter(index + 1).then((response) => response.data))
         
@@ -17,13 +18,20 @@ export const PersonagensList = () => {
     },[])
     
     return (
-        <div>
+        <ListContainer>
             {personagensList.map(character => (
-                <div key={character.id}>
-                    <li>{character.name}</li>
-                    <Link to={`${character.id}`}>Ir para personagem</Link>
-                </div>
+                <Item key={character.id}>
+                    <WrapperImage>
+                        <img src={character.image} alt={character.name} />
+                    </WrapperImage>
+                    <p>{character.name}</p>
+                    <SpecieWrapper>
+                        <span>{character.gender}</span>
+                        <span>{character.species}</span>
+                    </SpecieWrapper>
+                    <Link to={`${character.id}`}>Saiba mais</Link>
+                </Item>
             ))}
-        </div>
+        </ListContainer>
     )
 }
