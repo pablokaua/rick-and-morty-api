@@ -1,7 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
+import { Routers } from "./routes";
+import { GlobalStyle } from "./styles/global";
+
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <GlobalStyle/>
+      <Routers/>
+    </BrowserRouter>
   );
 }
 
